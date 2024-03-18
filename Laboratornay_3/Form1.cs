@@ -4,12 +4,9 @@ namespace Laboratornay_3
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализирует все компоненты формы (кнопки, текстовые поля..)
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

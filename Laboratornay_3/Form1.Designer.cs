@@ -28,19 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
+            fraction1 = new TextBox();
+            fraction2 = new TextBox();
+            comboBox1 = new ComboBox();
+            result = new TextBox();
+            resultTwo = new Label();
             SuspendLayout();
+            // 
+            // fraction1
+            // 
+            fraction1.Location = new Point(110, 12);
+            fraction1.Name = "fraction1";
+            fraction1.Size = new Size(102, 23);
+            fraction1.TabIndex = 0;
+            // 
+            // fraction2
+            // 
+            fraction2.Location = new Point(110, 67);
+            fraction2.Name = "fraction2";
+            fraction2.Size = new Size(102, 23);
+            fraction2.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            comboBox1.AutoCompleteCustomSource.AddRange(new string[] { "+", "-", "*", "/" });
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "+", "-", "*", "/" });
+            comboBox1.Location = new Point(44, 39);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(57, 23);
+            comboBox1.TabIndex = 2;
+            comboBox1.Text = "+";
+            // 
+            // result
+            // 
+            result.Location = new Point(44, 113);
+            result.Name = "result";
+            result.Size = new Size(168, 23);
+            result.TabIndex = 3;
+            result.Text = "Результат";
+            // 
+            // resultTwo
+            // 
+            resultTwo.AutoSize = true;
+            resultTwo.Location = new Point(44, 157);
+            resultTwo.Name = "resultTwo";
+            resultTwo.Size = new Size(164, 15);
+            resultTwo.TabIndex = 4;
+            resultTwo.Text = "Результат сравнения дробей";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(247, 188);
+            Controls.Add(resultTwo);
+            Controls.Add(result);
+            Controls.Add(comboBox1);
+            Controls.Add(fraction2);
+            Controls.Add(fraction1);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox fraction1;
+        private TextBox fraction2;
+        private ComboBox comboBox1;
+        private TextBox result;
+        private Label resultTwo;
     }
 }

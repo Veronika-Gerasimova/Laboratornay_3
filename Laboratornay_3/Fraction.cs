@@ -23,5 +23,7 @@ namespace Laboratornay_3
         {
             return $"{numerator}/{denominator}";
         }
+
+
     }
 }
