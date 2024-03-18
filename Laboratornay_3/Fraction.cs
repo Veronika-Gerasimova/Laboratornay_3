@@ -24,6 +24,34 @@ namespace Laboratornay_3
             return $"{numerator}/{denominator}";
         }
 
+        //Реализация сложения дробей
+        public Fraction Add(Fraction other)
+        {
+            int num = numerator * other.denominator + other.numerator * denominator;
+            int den = denominator * other.denominator;
+            return new Fraction(num, den).Simplify();
+        }
 
+        //Реализация вычитания
+        public Fraction Subtract(Fraction other)
+        {
+            int num = numerator * other.denominator - other.numerator * denominator;
+            int den = denominator * other.denominator;
+            return new Fraction(num, den).Simplify();
+        }
+
+        //Сокращение дроби
+        public Fraction Simplify()
+        {
+            int gcd = GCD(Math.Abs(numerator), Math.Abs(denominator)); //вычисление НОД для двух чисел
+            int sign = Math.Sign(numerator) * Math.Sign(denominator); //определение знака результирующей дроби
+            return new Fraction(sign * numerator / gcd, denominator / gcd);
+        }
+
+        //Вычисление наибольшего общего делителя с помощью алгоритма Евклида
+        private int GCD(int a, int b)
+        {
+            return b == 0 ? a : GCD(b, a % b);
+        }
     }
 }

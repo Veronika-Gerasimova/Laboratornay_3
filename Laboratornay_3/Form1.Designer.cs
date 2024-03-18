@@ -31,7 +31,7 @@
             fraction1 = new TextBox();
             fraction2 = new TextBox();
             comboBox1 = new ComboBox();
-            result = new TextBox();
+            resultLabel = new TextBox();
             resultTwo = new Label();
             SuspendLayout();
             // 
@@ -41,6 +41,8 @@
             fraction1.Name = "fraction1";
             fraction1.Size = new Size(102, 23);
             fraction1.TabIndex = 0;
+            fraction1.TextChanged += fraction1_TextChanged;
+            fraction1.KeyDown += fraction1_KeyDown;
             // 
             // fraction2
             // 
@@ -48,6 +50,7 @@
             fraction2.Name = "fraction2";
             fraction2.Size = new Size(102, 23);
             fraction2.TabIndex = 1;
+            fraction2.TextChanged += fraction2_TextChanged;
             // 
             // comboBox1
             // 
@@ -59,14 +62,15 @@
             comboBox1.Size = new Size(57, 23);
             comboBox1.TabIndex = 2;
             comboBox1.Text = "+";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // result
+            // resultLabel
             // 
-            result.Location = new Point(44, 113);
-            result.Name = "result";
-            result.Size = new Size(168, 23);
-            result.TabIndex = 3;
-            result.Text = "Результат";
+            resultLabel.Location = new Point(44, 113);
+            resultLabel.Name = "resultLabel";
+            resultLabel.Size = new Size(168, 23);
+            resultLabel.TabIndex = 3;
+            resultLabel.Text = "Результат";
             // 
             // resultTwo
             // 
@@ -83,7 +87,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(247, 188);
             Controls.Add(resultTwo);
-            Controls.Add(result);
+            Controls.Add(resultLabel);
             Controls.Add(comboBox1);
             Controls.Add(fraction2);
             Controls.Add(fraction1);
@@ -98,7 +102,7 @@
         private TextBox fraction1;
         private TextBox fraction2;
         private ComboBox comboBox1;
-        private TextBox result;
+        private TextBox resultLabel;
         private Label resultTwo;
     }
 }
