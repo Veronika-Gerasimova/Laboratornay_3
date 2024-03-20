@@ -86,6 +86,19 @@ namespace Laboratornay_3
                     resultTwo.Text = "Дроби равны";
                 }
 
+                bool areEqual = frac1.Equals(frac2);
+
+                // Вывод результата сравнения для Equals
+                if (areEqual)
+                {
+                    resultThree.Text = "Дроби равны";
+                }
+                else
+                {
+                    resultThree.Text = "Дроби не равны";
+                }
+
+
                 Fraction result = null;
                 switch (comboBox1.Text)
                 {

@@ -79,5 +79,43 @@ namespace Laboratornay_3
             int num2 = other.numerator * denominator;
             return num1.CompareTo(num2);
         }
+        
+        //Метод позволяет сравнить два объекта
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Fraction other = (Fraction)obj;
+            return this.numerator == other.numerator && this.denominator == other.denominator;
+        }
+        //Возвращает число-дробь, по которому сравниваются объекты
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(numerator, denominator);
+        }
+
+        public static bool operator ==(Fraction frac1, Fraction frac2)
+        {
+            if (ReferenceEquals(frac1, frac2))
+            {
+                return true;
+            }
+
+            if (frac1 is null || frac2 is null)
+            {
+                return false;
+            }
+
+            return frac1.Equals(frac2);
+        }
+
+        public static bool operator !=(Fraction frac1, Fraction frac2)
+        {
+            return !(frac1 == frac2);
+        }
+
     }
 }

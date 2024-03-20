@@ -33,11 +33,12 @@
             comboBox1 = new ComboBox();
             resultLabel = new TextBox();
             resultTwo = new Label();
+            resultThree = new Label();
             SuspendLayout();
             // 
             // fraction1
             // 
-            fraction1.Location = new Point(110, 12);
+            fraction1.Location = new Point(91, 12);
             fraction1.Name = "fraction1";
             fraction1.Size = new Size(102, 23);
             fraction1.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // fraction2
             // 
-            fraction2.Location = new Point(110, 67);
+            fraction2.Location = new Point(91, 63);
             fraction2.Name = "fraction2";
             fraction2.Size = new Size(102, 23);
             fraction2.TabIndex = 1;
@@ -57,7 +58,7 @@
             comboBox1.AutoCompleteCustomSource.AddRange(new string[] { "+", "-", "*", "/" });
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "+", "-", "*", "/" });
-            comboBox1.Location = new Point(44, 39);
+            comboBox1.Location = new Point(25, 38);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(57, 23);
             comboBox1.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // resultLabel
             // 
-            resultLabel.Location = new Point(44, 113);
+            resultLabel.Location = new Point(25, 104);
             resultLabel.Name = "resultLabel";
             resultLabel.Size = new Size(168, 23);
             resultLabel.TabIndex = 3;
@@ -75,17 +76,27 @@
             // resultTwo
             // 
             resultTwo.AutoSize = true;
-            resultTwo.Location = new Point(44, 157);
+            resultTwo.Location = new Point(25, 144);
             resultTwo.Name = "resultTwo";
             resultTwo.Size = new Size(164, 15);
             resultTwo.TabIndex = 4;
             resultTwo.Text = "Результат сравнения дробей";
             // 
+            // resultThree
+            // 
+            resultThree.AutoSize = true;
+            resultThree.Location = new Point(25, 177);
+            resultThree.Name = "resultThree";
+            resultThree.Size = new Size(235, 15);
+            resultThree.TabIndex = 5;
+            resultThree.Text = "Результат сравнения дробей через Equals";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(247, 188);
+            ClientSize = new Size(268, 214);
+            Controls.Add(resultThree);
             Controls.Add(resultTwo);
             Controls.Add(resultLabel);
             Controls.Add(comboBox1);
@@ -104,5 +115,6 @@
         private ComboBox comboBox1;
         private TextBox resultLabel;
         private Label resultTwo;
+        private Label resultThree;
     }
 }
