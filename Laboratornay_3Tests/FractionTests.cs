@@ -45,5 +45,47 @@ namespace Laboratornay_3.Tests
             Assert.AreEqual(new Fraction(1, 2).ToString(), result.ToString());
         }
 
+        [TestMethod]
+        public void Multiply_TwoFractions_ReturnsCorrectFraction()
+        {
+            Fraction fraction1 = new Fraction(1, 2);
+            Fraction fraction2 = new Fraction(2, 3);
+
+            Fraction result = fraction1.Multiply(fraction2);
+
+            Assert.AreEqual(new Fraction(2, 6).ToString(), result.ToString());
+        }
+
+        [TestMethod]
+        public void Divide_TwoFractions_ReturnsCorrectFraction()
+        {
+            Fraction fraction1 = new Fraction(1, 2);
+            Fraction fraction2 = new Fraction(2, 3);
+
+            Fraction result = fraction1.Divide(fraction2);
+
+            Assert.AreEqual(new Fraction(3, 4).ToString(), result.ToString());
+        }
+
+
+
+        [TestMethod]
+        public void Simplify_Fraction_ReturnsSimplifiedFraction()
+        {
+            Fraction fraction = new Fraction(6, 8);
+            Fraction result = fraction.Simplify();
+            Assert.AreEqual(new Fraction(3, 4).ToString(), result.ToString());
+        }
+
+
+        [TestMethod]
+        public void CompareTo_TwoFractions_ReturnsCorrectComparison()
+        {
+            Fraction fraction1 = new Fraction(1, 2);
+            Fraction fraction2 = new Fraction(2, 4);
+            int result = fraction1.CompareTo(fraction2);
+            Assert.AreEqual(0, result); 
+        }
+
     }
 }

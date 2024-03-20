@@ -53,5 +53,31 @@ namespace Laboratornay_3
         {
             return b == 0 ? a : GCD(b, a % b);
         }
+
+        //Реализация умножения
+        public Fraction Multiply(Fraction other)
+        {
+            int num = numerator * other.numerator;
+            int den = denominator * other.denominator;
+            return new Fraction(num, den);
+        }
+
+        //Реализация деления
+        public Fraction Divide(Fraction other)
+        {
+            if (other.numerator == 0)
+                throw new DivideByZeroException("На ноль делить нельзя");
+            int num = numerator * other.denominator;
+            int den = denominator * other.numerator;
+            return new Fraction(num, den);
+        }
+
+        //Сравнение дробей
+        public int CompareTo(Fraction other)
+        {
+            int num1 = numerator * other.denominator;
+            int num2 = other.numerator * denominator;
+            return num1.CompareTo(num2);
+        }
     }
 }

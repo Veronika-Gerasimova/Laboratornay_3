@@ -36,11 +36,18 @@ namespace Laboratornay_3
 
         private void Calculate()
         {
+            try
+            {
                 string input1 = fraction1.Text;
                 string input2 = fraction2.Text;
 
                 string[] parts1 = input1.Split('/');
                 string[] parts2 = input2.Split('/');
+
+                if (parts1.Length != 2 || parts2.Length != 2)
+                {
+                    throw new FormatException("Дроби должны быть в формате 'числитель/знаменатель'");
+                }
 
                 int numerator1 = int.Parse(parts1[0]);
                 int denominator1 = int.Parse(parts1[1]);
@@ -48,23 +55,51 @@ namespace Laboratornay_3
                 int numerator2 = int.Parse(parts2[0]);
                 int denominator2 = int.Parse(parts2[1]);
 
+                //Если пользователь ввел неправильную дробь или знаменатель равен 0
+                if (numerator1 > denominator1 || denominator1 == 0 || numerator2 > denominator2 || denominator2 == 0)
+                {
+                    throw new ArgumentException("Некорректные значения числителя и знаменателя");
+                }
+
+                if (numerator1 == denominator1 && numerator2 == denominator2)
+                {
+                    throw new ArgumentException("Числитель и знаменатель не могут быть равны в данном случае. Введите правильную дробь");
+                }
+
                 var frac1 = new Fraction(numerator1, denominator1).Simplify(); ;
                 var frac2 = new Fraction(numerator2, denominator2).Simplify(); ;
-    
+
+                // Сравнение дробей
+                int comparisonResult = frac1.CompareTo(frac2);
+
+                // Вывод результата сравнения
+                if (comparisonResult < 0)
+                {
+                    resultTwo.Text = "Первая дробь меньше второй";
+                }
+                else if (comparisonResult > 0)
+                {
+                    resultTwo.Text = "Первая дробь больше второй";
+                }
+                else
+                {
+                    resultTwo.Text = "Дроби равны";
+                }
+
                 Fraction result = null;
                 switch (comboBox1.Text)
                 {
                     case "+":
-                        
+                        result = frac1.Add(frac2);
                         break;
                     case "-":
-                       
+                        result = frac1.Subtract(frac2);
                         break;
                     case "*":
-                        
+                        result = frac1.Multiply(frac2);
                         break;
                     case "/":
-                        
+                        result = frac1.Divide(frac2);
                         break;
                     default:
                         break;
@@ -75,7 +110,16 @@ namespace Laboratornay_3
                     resultLabel.Text = result.ToString();
                     result.Simplify();
                 }
-         }
+            }
+            catch (FormatException)
+            {
+                // Обработка некорректного формата
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
            
     }
     
