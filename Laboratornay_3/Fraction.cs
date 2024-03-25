@@ -51,7 +51,7 @@ namespace Laboratornay_3
         //Вычисление наибольшего общего делителя с помощью алгоритма Евклида
         private int GCD(int a, int b)
         {
-            return b == 0 ? a : GCD(b, a % b);
+            return b == 0 ? a : GCD(b, a % b);// Если (b == 0), то возвращается значение a. Если b не равно нулю, то вызывается рекурсивно метод GCD с аргументами b и a % b
         }
 
         //Реализация умножения
@@ -115,6 +115,36 @@ namespace Laboratornay_3
         public static bool operator !=(Fraction frac1, Fraction frac2)
         {
             return !(frac1 == frac2);
+        }
+
+        public static Fraction operator +(Fraction frac1, Fraction frac2)
+        {
+            int num = frac1.numerator * frac2.denominator + frac2.numerator * frac1.denominator;
+            int den = frac1.denominator * frac2.denominator;
+            return new Fraction(num, den).Simplify();
+        }
+
+        public static Fraction operator -(Fraction frac1, Fraction frac2)
+        {
+            int num = frac1.numerator * frac2.denominator - frac2.numerator * frac1.denominator;
+            int den = frac1.denominator * frac2.denominator;
+            return new Fraction(num, den).Simplify();
+        }
+
+        public static Fraction operator *(Fraction frac1, Fraction frac2)
+        {
+            int num = frac1.numerator * frac2.numerator;
+            int den = frac1.denominator * frac2.denominator;
+            return new Fraction(num, den).Simplify();
+        }
+
+        public static Fraction operator /(Fraction frac1, Fraction frac2)
+        {
+            if (frac2.numerator == 0)
+                throw new DivideByZeroException("На ноль делить нельзя");
+            int num = frac1.numerator * frac2.denominator;
+            int den = frac1.denominator * frac2.numerator;
+            return new Fraction(num, den).Simplify();
         }
 
     }
