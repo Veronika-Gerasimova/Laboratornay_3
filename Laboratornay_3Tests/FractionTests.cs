@@ -20,6 +20,7 @@ namespace Laboratornay_3.Tests
 
             string result = fraction.ToString();
 
+
             Assert.AreEqual("3/4", result);
         }
 
@@ -53,7 +54,7 @@ namespace Laboratornay_3.Tests
 
             Fraction result = fraction1.Multiply(fraction2);
 
-            Assert.AreEqual(new Fraction(2, 6).ToString(), result.ToString());
+            Assert.AreEqual(new Fraction(1, 3).ToString(), result.ToString());
         }
 
         [TestMethod]
@@ -87,5 +88,27 @@ namespace Laboratornay_3.Tests
             Assert.AreEqual(0, result); 
         }
 
+        [TestMethod]
+        public void Add_Fractions_ReturnsMistake()
+        {
+            Fraction fraction1 = new Fraction(4, 2);
+            Fraction fraction2 = new Fraction(1, 2);
+
+            Fraction result = fraction1.Add(fraction2);
+
+            Assert.IsFalse(result.Equals(fraction1));  
+        }
+
+
+        [TestMethod]
+        public void Add_Fractions_ReturnsCorrectNumber()
+        {
+            Fraction fraction1 = new Fraction(1, 2);
+            Fraction fraction2 = new Fraction(1, 2);
+
+            Fraction result = fraction1.Add(fraction2);
+
+            Assert.AreEqual(new Fraction(1, 1).ToString(), result.ToString());
+        }
     }
 }

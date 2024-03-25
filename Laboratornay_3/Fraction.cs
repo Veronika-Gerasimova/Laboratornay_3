@@ -15,29 +15,35 @@ namespace Laboratornay_3
         {
             if (den == 0)
                 throw new ArgumentException("Знаменатель не может быть равен 0");
+           
             this.numerator = num;
             this.denominator = den;
         }
         //Метод, возвращающий строковое представление дроби в формате числитель/знаменатель
-        public string ToString()
+        public override string ToString()
         {
-            return $"{numerator}/{denominator}";
+            if (denominator == 1)
+            {
+                return numerator.ToString();
+            }
+            else
+            {
+                return $"{numerator}/{denominator}";
+            }
         }
+
 
         //Реализация сложения дробей
         public Fraction Add(Fraction other)
         {
-            int num = numerator * other.denominator + other.numerator * denominator;
-            int den = denominator * other.denominator;
-            return new Fraction(num, den).Simplify();
+            return this + other;
         }
+
 
         //Реализация вычитания
         public Fraction Subtract(Fraction other)
         {
-            int num = numerator * other.denominator - other.numerator * denominator;
-            int den = denominator * other.denominator;
-            return new Fraction(num, den).Simplify();
+            return this - other;
         }
 
         //Сокращение дроби
@@ -57,19 +63,13 @@ namespace Laboratornay_3
         //Реализация умножения
         public Fraction Multiply(Fraction other)
         {
-            int num = numerator * other.numerator;
-            int den = denominator * other.denominator;
-            return new Fraction(num, den);
+            return this * other;
         }
 
         //Реализация деления
         public Fraction Divide(Fraction other)
         {
-            if (other.numerator == 0)
-                throw new DivideByZeroException("На ноль делить нельзя");
-            int num = numerator * other.denominator;
-            int den = denominator * other.numerator;
-            return new Fraction(num, den);
+            return this / other;
         }
 
         //Сравнение дробей
@@ -79,7 +79,7 @@ namespace Laboratornay_3
             int num2 = other.numerator * denominator;
             return num1.CompareTo(num2);
         }
-        
+
         //Метод позволяет сравнить два объекта
         public override bool Equals(object obj)
         {
@@ -91,6 +91,7 @@ namespace Laboratornay_3
             Fraction other = (Fraction)obj;
             return this.numerator == other.numerator && this.denominator == other.denominator;
         }
+
         //Возвращает число-дробь, по которому сравниваются объекты
         public override int GetHashCode()
         {
@@ -146,6 +147,5 @@ namespace Laboratornay_3
             int den = frac1.denominator * frac2.numerator;
             return new Fraction(num, den).Simplify();
         }
-
     }
 }

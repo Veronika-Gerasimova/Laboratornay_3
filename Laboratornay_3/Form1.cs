@@ -44,6 +44,8 @@ namespace Laboratornay_3
                 string[] parts1 = input1.Split('/');
                 string[] parts2 = input2.Split('/');
 
+
+
                 if (parts1.Length != 2 || parts2.Length != 2)
                 {
                     throw new FormatException("Дроби должны быть в формате 'числитель/знаменатель'");
@@ -58,12 +60,18 @@ namespace Laboratornay_3
                 //Если пользователь ввел неправильную дробь или знаменатель равен 0
                 if (numerator1 > denominator1 || denominator1 == 0 || numerator2 > denominator2 || denominator2 == 0)
                 {
-                    throw new ArgumentException("Некорректные значения числителя и знаменателя");
+                      throw new ArgumentException("Некорректные значения числителя и знаменателя");
                 }
 
                 if (numerator1 == denominator1 && numerator2 == denominator2)
                 {
                     throw new ArgumentException("Числитель и знаменатель не могут быть равны в данном случае. Введите правильную дробь");
+                }
+
+                if (!int.TryParse(parts1[0], out numerator1) || !int.TryParse(parts1[1], out denominator1) ||
+                !int.TryParse(parts2[0], out numerator2) || !int.TryParse(parts2[1], out denominator2))
+                {
+                    throw new FormatException("Числитель и знаменатель должны быть целыми числами");
                 }
 
                 var frac1 = new Fraction(numerator1, denominator1).Simplify(); ;
@@ -126,14 +134,14 @@ namespace Laboratornay_3
             }
             catch (FormatException)
             {
-                // Обработка некорректного формата
+               //
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-           
+ 
     }
     
 }
