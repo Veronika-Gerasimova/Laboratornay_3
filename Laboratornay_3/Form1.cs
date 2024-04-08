@@ -111,16 +111,16 @@ namespace Laboratornay_3
                 switch (comboBox1.Text)
                 {
                     case "+":
-                        result = frac1.Add(frac2);
+                        result = frac1 + frac2;
                         break;
                     case "-":
-                        result = frac1.Subtract(frac2);
+                        result = frac1 - frac2;
                         break;
                     case "*":
-                        result = frac1.Multiply(frac2);
+                        result = frac1 * frac2;
                         break;
                     case "/":
-                        result = frac1.Divide(frac2);
+                        result = frac1/frac2;
                         break;
                     default:
                         break;
@@ -132,9 +132,9 @@ namespace Laboratornay_3
                     result.Simplify();
                 }
             }
-            catch (FormatException)
+            catch (FormatException )
             {
-               //
+                //
             }
             catch (ArgumentException ex)
             {

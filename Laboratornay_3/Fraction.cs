@@ -32,20 +32,6 @@ namespace Laboratornay_3
             }
         }
 
-
-        //Реализация сложения дробей
-        public Fraction Add(Fraction other)
-        {
-            return this + other;
-        }
-
-
-        //Реализация вычитания
-        public Fraction Subtract(Fraction other)
-        {
-            return this - other;
-        }
-
         //Сокращение дроби
         public Fraction Simplify()
         {
@@ -60,18 +46,7 @@ namespace Laboratornay_3
             return b == 0 ? a : GCD(b, a % b);// Если (b == 0), то возвращается значение a. Если b не равно нулю, то вызывается рекурсивно метод GCD с аргументами b и a % b
         }
 
-        //Реализация умножения
-        public Fraction Multiply(Fraction other)
-        {
-            return this * other;
-        }
-
-        //Реализация деления
-        public Fraction Divide(Fraction other)
-        {
-            return this / other;
-        }
-
+      
         //Сравнение дробей
         public int CompareTo(Fraction other)
         {
